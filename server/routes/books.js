@@ -52,12 +52,29 @@ router.post('/add', (req, res, next) => {
 
 // GET the Book Details page in order to edit an existing Book
 router.get('/:id', (req, res, next) => {
- 
+  book.findById(req.params.id, function (err, bookData) {
+    res.render('books/details',{
+      title:"Edit "+bookData.Title,
+      books:bookData
+    });
+  });
+
 });
 
 // POST - process the information passed from the details form and update the document
 router.post('/:id', (req, res, next) => {
-  
+  book.findByIdAndUpdate({
+    "_id":req.params.id
+    },
+    {
+      Title:req.body.title,
+      Description:"",
+      Price:req.body.price,
+      Author:req.body.author,
+      Genre:req.body.genre
+    },function(){
+      res.redirect('/books');
+    });
 });
 
 // GET - process the delete by user id
