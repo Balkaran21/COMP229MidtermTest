@@ -31,12 +31,23 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
-  
+  res.render('books/details',{
+    title:"Add a Book",
+    books:''
+  });
 });
 
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
-  
+  book.create({
+    Title:req.body.title,
+    Description:"",
+    Price:req.body.price,
+    Author:req.body.author,
+    Genre:req.body.genre
+  });
+
+  res.redirect('/books');
 });
 
 // GET the Book Details page in order to edit an existing Book
