@@ -1,8 +1,8 @@
 /*
-  Filename: 
-  Author: 
-  StudentID: 
-  App: 
+  Filename: books.js
+  Author: Balkaran Singh
+  StudentID: 301169877
+  App: Books
 */
 
 // modules required for routing
